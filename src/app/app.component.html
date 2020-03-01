@@ -1,0 +1,22 @@
+<nb-layout withScroll [class.header-hidden]="!(layout$ | async)?.header">
+
+  <nb-layout-header *ngIf="(layout$ | async)?.header" class="slot header" >
+    <div class="space space-component1">
+      <div class="space space-component">
+        <input nbInput class="input size-xl-medium" placeholder="Search" type="undefined" shape="rectangle" status="basic">
+        <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB2NOYEVAvkEen65Agj2fFeGV88-r_hJm3mL4nPChzz_ih9NpV">
+      </div>
+    </div>
+  </nb-layout-header>
+
+  <nb-sidebar *ngIf="(layout$ | async)?.sidebar" class="slot sidebar" responsive [collapsedBreakpoints]="['xs', 'is', 'sm']" [compactedBreakpoints]="[]">
+    <div class="space space-component2">
+      <nb-menu class="menu" [items]="items"></nb-menu>
+    </div>
+  </nb-sidebar>
+
+  <nb-layout-column [style.padding]="padding$ | async">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+</nb-layout>
